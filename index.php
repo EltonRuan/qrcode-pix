@@ -88,16 +88,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
             }
             break;
         case 'telefone':
-        $chaveLimpa = preg_replace('/\D/', '', $chaveRaw);
-        if (substr($chaveLimpa, 0, 2) === '55') {
-            $chaveLimpa = substr($chaveLimpa, 2);
-        }
-        if (validarTelefone($chaveLimpa)) {
-            $chave = $chaveLimpa;
-            $chaveExibida = '+55 ' . substr($chaveLimpa, 0, 2) . ' ' . substr($chaveLimpa, 2, 5) . '-' . substr($chaveLimpa, 7);
-            $valid = true;
-        }
-
+            $chaveLimpa = preg_replace('/\D/', '', $chaveRaw);
+            if (substr($chaveLimpa, 0, 2) === '55') {
+                $chaveLimpa = substr($chaveLimpa, 2);
+            }
+            if (validarTelefone($chaveLimpa)) {
+                $chave = '+55' . $chaveLimpa; // <-- Isso garante que o payload terá o +55
+                $chaveExibida = '+55 ' . substr($chaveLimpa, 0, 2) . ' ' . substr($chaveLimpa, 2, 5) . '-' . substr($chaveLimpa, 7);
+                $valid = true;
+            }
             break;
         case 'email':
             if (validarEmail($chaveRaw)) {
@@ -182,6 +181,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
             max-width: 100px;
             margin-bottom: 20px;
         }
+
+          #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.8);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .spinner {
+            border: 5px solid black;
+            border-top: 5px solid #333;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
     </style>
 <script>
     function limparFormulario() {
@@ -256,7 +283,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
 
 </head>
 <body>
-    <img src="logo.png" alt="Sua Logo" class="logo" />
+
+    <div id="loading-overlay">
+    <div style="text-align: center;">
+        <div class="spinner"></div>
+    </div>
+    </div>
 
     <h1>Gerar QR Code PIX</h1>
 
@@ -264,6 +296,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
         <div id="erro" class="error">Erro: Preencha corretamente todos os campos e a chave PIX no formato correto conforme o tipo.</div>
     <?php endif; ?>
 
+    <?php if (!$qrCodeUrl): ?>
     <form method="post" action="">
         <input type="hidden" name="acao" value="gerar" />
 
@@ -295,7 +328,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
         <button type="button" onclick="limparFormulario()">Limpar</button>
     </form>
 
-    <?php if ($formEnviado && $payload): ?>
+    <?php endif; ?>
+
+    <?php if ($formEnviado && $payload && $qrCodeUrl): ?>
         <div id="resultado">
             <hr>
             <p><strong>Chave usada:</strong> <?= htmlspecialchars($chaveExibida) ?></p>
@@ -304,6 +339,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
             <p><strong>Payload PIX gerado:</strong></p>
             <textarea rows="6" readonly><?= $payload ?></textarea>
         </div>
+
+        <form method="GET">
+            <button type="submit" style="margin-top: 20px; padding: 10px 20px;">Gerar novo</button>
+        </form>
     <?php endif; ?>
+
+    <script>
+        const form = document.querySelector("form");
+        const overlay = document.getElementById("loading-overlay");
+
+        form?.addEventListener("submit", function () {
+            overlay.style.display = "flex";
+        });
+    </script>
+
 </body>
 </html>
