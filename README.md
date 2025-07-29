@@ -1,4 +1,4 @@
-<div align='center'> <img style="width:100%" src="https://capsule-render.vercel.app/api?type=soft&height=200&color=FFFFFF&text=QR%20Code%20PIX%20Generator%20-%20Sao%20Paulo%20Skills%202024&fontSize=40&fontAlign=50&strokeWidth=0&descAlignY=80&stroke=000000"> </div> 
+<div align='center'> <img style="width:100%" src="https://capsule-render.vercel.app/api?type=soft&height=200&color=FFFFFF&text=QR%20Code%20PIX%20Generator&fontSize=40&fontAlign=50&strokeWidth=0&descAlignY=80&stroke=000000"> </div> 
 
 <nav align="center"> <h2>🔗 NAVIGATION</h2> <p> 
   <a href="#about-this-project">ABOUT THIS PROJECT</a> | <a href="#technologies-and-tools-used">TECHNOLOGIES AND TOOLS USED</a> | <a href="#installation-and-setup">INSTALLATION AND SETUP</a> | <a href="#how-it-works">HOW IT WORKS</a> | <a href="#final-considerations">FINAL CONSIDERATIONS</a> </p> 
