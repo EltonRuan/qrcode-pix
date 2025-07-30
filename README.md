@@ -97,17 +97,16 @@ This flow ensures that all user input is safely processed and transformed into a
 
 ## FINAL CONSIDERATIONS
 
-This documentation presents the QR Code PIX Generator, a practical application to reinforce your PHP skills while addressing real financial tech logic. It's an excellent example of:
+Creating the QR Code PIX Generator has been a deeply rewarding experience — not only as a way to improve my PHP skills, but also as an opportunity to build something useful for the community and for real-world applications.
 
-How to work with raw data and string standards.
+Throughout the development process, I learned a lot about working with structured string standards, formatting raw input data according to financial protocols, and implementing checksum verification with CRC16 to ensure payload validity. I also explored API integration to dynamically generate QR Codes, and most importantly, I was able to modularize the logic in a way that makes the project clean, reusable, and ready for integration into other systems such as invoicing, ecommerce checkouts, or donation platforms.
 
-Understanding checksum generation for financial use (CRC16).
+What made this project even more exciting was the challenge of separating everything into a dedicated class for better organization and future scalability. This structure not only improves maintainability but also makes it easier for others to reuse and adapt the code for their own needs.
 
-Integrating third-party services like QR Code APIs.
+I'm proud of how this tool turned out, and I'm even more motivated to continue growing as a developer. My goal is to keep contributing to the open-source community, sharing practical tools like this, and helping others learn through real, hands-on code examples.
 
-Feel free to expand the tool, apply visual enhancements with frameworks like TailwindCSS, or integrate it into an ecommerce checkout or invoice system.
+Feel free to use, adapt, or enhance this project!
 
-Good luck on your journey—and congrats for getting here! 🚀
 
 <p><strong>© 2025 EltonRuan. All rights reserved.</strong></p> 
 
