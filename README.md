@@ -28,7 +28,7 @@ It is designed for public use and can be easily adapted or implemented into othe
 Clone the repository:
 
 ```bash
-git clone https://github.com/EltonRuan/qrcodepix.git
+git clone https://github.com/EltonRuan/qrcode-pix.git
 ```
 
 Navigate to the project directory:
