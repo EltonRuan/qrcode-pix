@@ -6,28 +6,30 @@
 
 ## ABOUT THIS PROJECT
 
-The QR Code PIX Generator is a PHP-based application developed for the São Paulo Skills 2024 competition simulation. Its objective is to generate valid and scannable static PIX payment QR codes by simply filling out a form with key details like the receiver’s PIX key, amount, name, city, and an optional description.
+The QR Code PIX Generator is a PHP-based application created out of personal interest and the desire to contribute to the developer community. Its main goal is to generate valid and scannable static PIX payment QR codes by simply filling out a form with essential information like the receiver’s PIX key, amount, name, city, and an optional description.
 
-The application demonstrates advanced PHP string manipulation, checksum calculations (CRC16), and QR code generation using Google Chart API.
+PIX is an instant payment system developed by the Central Bank of Brazil. It allows money transfers between individuals, companies, and the government to happen in real time, 24/7, with no intermediary bank fees. It has become one of the most popular and efficient payment methods in Brazil.
+
+This tool was developed for study purposes, and aims to strengthen knowledge in PHP involving string manipulation, standardized data formatting, checksum generation (CRC16), and integration with external services like the Google Chart API for QR Code rendering.
+
+It is designed for public use and can be easily adapted or implemented into other systems, such as invoicing, donation pages, ecommerce platforms, or personal finance apps.
 
 ## TECHNOLOGIES AND TOOLS USED
 
 - PHP 7.4+
-
 - HTML5
-
 - CSS
-
 - Google Chart API (for QR Code)
-
 - Visual Studio Code
-
 - XAMPP ( for local testing )
 
 ### STEP-BY-STEP
+
 Clone the repository:
 
+```bash
 git clone https://github.com/EltonRuan/qrcodepix.git
+```
 
 Navigate to the project directory:
 
