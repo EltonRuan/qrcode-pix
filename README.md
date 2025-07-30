@@ -33,45 +33,67 @@ git clone https://github.com/EltonRuan/qrcodepix.git
 
 Navigate to the project directory:
 
+```bash
 cd qrcodepix
+```
 
 Run the PHP server locally:
 
+```bash
 php -S localhost:8000
+```
 
 ### Access the project:
+
 Open your browser and navigate to:
 
+```bash
 http://localhost:8000/
+```
 
 ## HOW IT WORKS
 
-Form Fields
+### Form Fields:
 
-- Tipo de chave PIX: CPF, CNPJ, Telefone, E-mail, ou Aleatória.
-- Chave: Valor da chave conforme o tipo.
-- Valor: Valor da cobrança.
-- Nome do recebedor: Máximo 25 caracteres.
-- Cidade: Máximo 15 caracteres.
-- Descrição (opcional): Até 20 caracteres.
+- PIX key type: CPF, CNPJ, Phone number, Email, or Random.
+- Key: The key value according to the selected type.
+- Amount: The payment amount.
+- Receiver's name.
+- City.
+- Description (optional).
 
 ## Backend Logic
-Sanitiza e formata corretamente o tipo de chave (CPF, telefone com +55, etc.).
 
-Calcula o CRC16 para gerar o código de pagamento estático PIX.
+### Input Sanitization and Formatting
 
-Retorna:
+The application begins by receiving user input from a form, including the PIX key, value, receiver's name, city, and an optional description.
+It sanitizes and formats the PIX key based on its type:
 
-QR Code gerado com o link da Google Chart API.
+- CPF and CNPJ are stripped of all formatting characters.
+- Phone numbers are automatically formatted to include the international prefix +55, as required by the PIX specification.
+- Email and random keys are accepted as-is but still validated to remove leading/trailing whitespace.
 
-Payload completo para uso em outros apps ou integração.
+### Payload Generation
 
-QR Code renderizado na tela.
+Once all fields are processed, the application dynamically builds the PIX payload string according to the EMVCo and BACEN (Brazilian Central Bank) static QR code format specifications. This includes nested IDs for merchant account information, transaction value, country code, and more.
 
-Payload completo exibido em <textarea> para copiar.
+### Checksum Calculation (CRC16)
 
-Valor e chave retornados para conferência.
+To ensure data integrity, the application calculates the CRC16-CCITT checksum at the end of the payload. This is a required step for any valid static PIX QR code and guarantees that the QR code can be validated by any compatible scanner or banking app.
 
+### QR Code Generation
+
+The final payload is passed to the Google Chart API, which returns a scannable QR Code image. This QR code represents the full payment data in a compact and scannable form.
+
+### Output and Integration
+
+After the QR code is generated, the following elements are returned and displayed:
+
+- A QR code image, rendered on the screen, ready to be scanned.
+- The full payload string, shown inside a <textarea> so the user can easily copy it for use in other systems (e.g., invoices, messaging apps, or back-end APIs).
+- The formatted PIX key and amount are displayed for confirmation and transparency.
+
+This flow ensures that all user input is safely processed and transformed into a valid static PIX payment code, ready for public use or system integration.
 
 ## FINAL CONSIDERATIONS
 
