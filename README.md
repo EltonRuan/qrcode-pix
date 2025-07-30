@@ -1,7 +1,7 @@
 <div align='center'> <img style="width:100%" src="https://capsule-render.vercel.app/api?type=soft&height=200&color=FFFFFF&text=QR%20Code%20PIX%20Generator&fontSize=40&fontAlign=50&strokeWidth=0&descAlignY=80&stroke=000000"> </div> 
 
 <nav align="center"> <h2>🔗 NAVIGATION</h2> <p> 
-  <a href="#about-this-project">ABOUT THIS PROJECT</a> | <a href="#technologies-and-tools-used">TECHNOLOGIES AND TOOLS USED</a> | <a href="#installation-and-setup">INSTALLATION AND SETUP</a> | <a href="#how-it-works">HOW IT WORKS</a> | <a href="#final-considerations">FINAL CONSIDERATIONS</a> </p> 
+  <a href="#about-this-project">ABOUT THIS PROJECT</a> | <a href="#technologies-and-tools-used">TECHNOLOGIES AND TOOLS USED</a> | <a href="#how-it-works">HOW IT WORKS</a> | <a href="#final-considerations">FINAL CONSIDERATIONS</a> </p> 
 </nav>
 
 ## ABOUT THIS PROJECT
@@ -12,55 +12,46 @@ The application demonstrates advanced PHP string manipulation, checksum calculat
 
 ## TECHNOLOGIES AND TOOLS USED
 
-PHP 7.4+
+- PHP 7.4+
 
-HTML5
+- HTML5
 
-CSS (optional styling)
+- CSS
 
-Google Chart API (for QR Code)
+- Google Chart API (for QR Code)
 
-Visual Studio Code
+- Visual Studio Code
 
-XAMPP or Laravel Valet for local testing
+- XAMPP ( for local testing )
 
 ### STEP-BY-STEP
 Clone the repository:
 
-bash
-Copy
-Edit
 git clone https://github.com/EltonRuan/qrcodepix.git
+
 Navigate to the project directory:
 
-bash
-Copy
-Edit
 cd qrcodepix
+
 Run the PHP server locally:
 
-bash
-Copy
-Edit
 php -S localhost:8000
-Access the project:
+
+### Access the project:
 Open your browser and navigate to:
 
-bash
-Copy
-Edit
-http://localhost:8000/teste.php
+http://localhost:8000/
 
 ## HOW IT WORKS
 
 Form Fields
 
-Tipo de chave PIX: CPF, CNPJ, Telefone, E-mail, ou Aleatória.
-Chave: Valor da chave conforme o tipo.
-Valor: Valor da cobrança.
-Nome do recebedor: Máximo 25 caracteres.
-Cidade: Máximo 15 caracteres.
-Descrição (opcional): Até 20 caracteres.
+- Tipo de chave PIX: CPF, CNPJ, Telefone, E-mail, ou Aleatória.
+- Chave: Valor da chave conforme o tipo.
+- Valor: Valor da cobrança.
+- Nome do recebedor: Máximo 25 caracteres.
+- Cidade: Máximo 15 caracteres.
+- Descrição (opcional): Até 20 caracteres.
 
 ## Backend Logic
 Sanitiza e formata corretamente o tipo de chave (CPF, telefone com +55, etc.).
@@ -73,7 +64,6 @@ QR Code gerado com o link da Google Chart API.
 
 Payload completo para uso em outros apps ou integração.
 
-📸 Resultado Exibido
 QR Code renderizado na tela.
 
 Payload completo exibido em <textarea> para copiar.
